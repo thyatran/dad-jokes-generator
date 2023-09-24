@@ -28,8 +28,20 @@ async function getJoke() {
         jokeEl.innerText = "An error happened, try again later!";
         console.log(error);
     }
-
-    
 }
 
 btnEl.addEventListener("click", getJoke);
+
+// tweet the joke
+const tweetBtn = document.getElementById("tweet");
+
+function tweet() {
+
+    const theJoke = jokeEl.innerText;
+    const tweetText =  `Check out this joke! \n\n ${theJoke}`;
+    const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
+    
+    window.open(tweetUrl, "_blank");
+}
+
+tweetBtn.addEventListener("click", tweet);
